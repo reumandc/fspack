@@ -45,6 +45,11 @@ plcf<-function(bpts,bptvals)
   bpts<-bpts[inds]
   bptvals<-bptvals[inds]
   
+  if (length(unique(bpts))<length(bpts))
+  {
+    stop("Error in plcf: bpts must have all unique values")
+  }
+  
   res<-list(bpts=bpts,bptvals=bptvals)
   class(res)<-c("plcf","list")
   return(res)
