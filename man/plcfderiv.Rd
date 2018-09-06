@@ -26,6 +26,7 @@ x<-c(1,2,4,12,13)
 y<-c(0,1,-1,100,5)
 obj<-plcf(x,y)
 res<-plcfderiv(obj)
+
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

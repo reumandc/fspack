@@ -16,6 +16,8 @@
 #' x<-1:5
 #' y<-c(.1,5,-3,4,10)
 #' res<-plcf(x,y)
+#' 
+#' @export  
 
 plcf<-function(bpts,bptvals)
 {

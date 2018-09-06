@@ -24,6 +24,7 @@ The \code{plcf} class represents piecewise linear continuous functions.
 x<-1:5
 y<-c(.1,5,-3,4,10)
 res<-plcf(x,y)
+
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

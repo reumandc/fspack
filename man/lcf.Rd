@@ -24,6 +24,7 @@ The \code{lcf} class represents locally constant functions.
 x<-1:5
 y<-c(.1,5,-3,4)
 res<-lcf(x,y)
+
 }
 \author{
 Daniel Reuman, \email{reuman@ku.edu}

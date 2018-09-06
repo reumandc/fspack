@@ -13,6 +13,8 @@
 #' y<-c(0,1,-1,100,5)
 #' obj<-plcf(x,y)
 #' res<-plcfderiv(obj)
+#' 
+#' @export  
 
 plcfderiv<-function(object)
 {

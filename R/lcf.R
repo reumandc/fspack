@@ -16,6 +16,8 @@
 #' x<-1:5
 #' y<-c(.1,5,-3,4)
 #' res<-lcf(x,y)
+#' 
+#' @export  
 
 lcf<-function(bpts,vals)
 {
