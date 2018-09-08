@@ -46,10 +46,13 @@ plcf<-function(bpts,bptvals)
   inds<-order(bpts)
   bpts<-bpts[inds]
   bptvals<-bptvals[inds]
-  
-  if (length(unique(bpts))<length(bpts))
+
+  #one last error check  
+  diffbpts<-diff(bpts)
+  diffvals<-diff(bptvals)
+  if (any(diffbpts==0 & diffvals!=0))
   {
-    stop("Error in plcf: bpts must have all unique values")
+    stop("Error in plcf: repeats in bpts without coincident repeats in bptsvals")
   }
   
   res<-list(bpts=bpts,bptvals=bptvals)
