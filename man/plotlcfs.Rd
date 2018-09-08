@@ -4,12 +4,12 @@
 \alias{plotlcfs}
 \title{Plots multiple \code{lcf} objects on the same axes}
 \usage{
-plotlcfs(lcflist, bds, filename)
+plotlcfs(lcflist, bds = NULL, filename = NA)
 }
 \arguments{
 \item{lcflist}{A list of \code{lcf} objects}
 
-\item{bds}{Plot bounds for the x axis. Default value NA corresponds to using the minimum range that includes the ranges of all the \code{lcf} objects.}
+\item{bds}{Plot bounds for the x axis. Default value NULL corresponds to using the minimum range that includes the ranges of all the \code{lcf} objects.}
 
 \item{filename}{File name (without extension) for saving the plot as a pdf. Default NA uses the default plotting device instead.}
 }

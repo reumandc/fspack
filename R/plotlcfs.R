@@ -3,7 +3,7 @@
 #' Plots multiple \code{lcf} objects on the same axes
 #' 
 #' @param lcflist A list of \code{lcf} objects
-#' @param bds Plot bounds for the x axis. Default value NA corresponds to using the minimum range that includes the ranges of all the \code{lcf} objects.
+#' @param bds Plot bounds for the x axis. Default value NULL corresponds to using the minimum range that includes the ranges of all the \code{lcf} objects.
 #' @param filename File name (without extension) for saving the plot as a pdf. Default NA uses the default plotting device instead.
 #' 
 #' @return \code{plotlcfs} returns nothing but generates a plot.
@@ -15,7 +15,7 @@
 #' 
 #' @export
 
-plotlcfs<-function(lcflist,bds,filename)
+plotlcfs<-function(lcflist,bds=NULL,filename=NA)
 {
   #error handling
   if (class(lcflist)!="list")
@@ -29,21 +29,24 @@ plotlcfs<-function(lcflist,bds,filename)
       stop("Error in plotlcfs: lcflist must be a list of lcf objects")
     }
   }
-  if (class(filename)!="character")
+  if (!is.na(filename) && class(filename)!="character")
   {
     stop("Error in plotlcfs: inappropriate filename argument")
   }
   
-  #find the bounds if bds was NA
-  bds<-c(Inf,-Inf)
-  for (counter in 1:length(lcflist))
+  #find the bounds if bds was NULL
+  if (is.null(bds))
   {
-    bds[1]<-min(c(bds[1],lcflist[[counter]]$bpts))
-    bds[2]<-max(c(bds[2],lcflist[[counter]]$bpts))
+    bds<-c(Inf,-Inf)
+    for (counter in 1:length(lcflist))
+    {
+      bds[1]<-min(c(bds[1],lcflist[[counter]]$bpts))
+      bds[2]<-max(c(bds[2],lcflist[[counter]]$bpts))
+    }
   }
   
-  #some more error handling, by now bds is not NA
-  if (!is.numeric(bds)))
+  #some more error handling
+  if (!is.numeric(bds))
   {
     stop("Error in plotlcfs: bds must be numeric")
   }
