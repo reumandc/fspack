@@ -4,7 +4,7 @@
 #' 
 #' @param lcflist A list of \code{lcf} objects
 #' @param bds Plot bounds for the x axis. Default value NULL corresponds to using the minimum range that includes the ranges of all the \code{lcf} objects.
-#' @param filename File name (without extension) for saving the plot as a pdf. Default NA uses the default plotting device instead.
+#' @param filename File name (without extension) for saving the plot as a pdf. Default NULL uses the default plotting device instead.
 #' 
 #' @return \code{plotlcfs} returns nothing but generates a plot.
 #' 
@@ -15,7 +15,7 @@
 #' 
 #' @export
 
-plotlcfs<-function(lcflist,bds=NULL,filename=NA)
+plotlcfs<-function(lcflist,bds=NULL,xlabel,ylabel,filename=NULL)
 {
   #error handling
   if (class(lcflist)!="list")
@@ -29,10 +29,19 @@ plotlcfs<-function(lcflist,bds=NULL,filename=NA)
       stop("Error in plotlcfs: lcflist must be a list of lcf objects")
     }
   }
-  if (!is.na(filename) && class(filename)!="character")
+  if (!is.null(filename) && (class(filename)!="character" || length(filename)!=1))
   {
     stop("Error in plotlcfs: inappropriate filename argument")
   }
+  if (class(xlabel)!="character" || length(xlabel)!=1)
+  {
+    stop("Error in plotlcfs: inappropriate xlabel argument")
+  }
+  if (class(ylabel)!="character" || length(ylabel)!=1)
+  {
+    stop("Error in plotlcfs: inappropriate ylabel argument")
+  }
+  
   
   #find the bounds if bds was NULL
   if (is.null(bds))
@@ -69,34 +78,38 @@ plotlcfs<-function(lcflist,bds=NULL,filename=NA)
   {
     ybds[1]<-min(c(ybds[1],lcflist[[counter]]$vals))
     ybds[2]<-max(c(ybds[2],lcflist[[counter]]$vals))
-    
   }
   
   #now do the plotting
-  if (!is.na(filename))
+  if (!is.null(filename))
   {
     pdf(file=paste0(filename,".pdf"))
   }
   h<-lcflist[[1]]
   bp<-h$bpts
   vs<-h$vals
-  plot(bp[1:2],rep(vs[1],2),xlim=bds,ylim=ybds)
+  plot(bp[1:2],rep(vs[1],2),xlim=bds,ylim=ybds,type='l',
+       xlab=xlabel,
+       ylab=ylabel)
   for (bpcount in 2:(length(bp)-1))
   {
     lines(bp[bpcount:(bpcount+1)],rep(vs[bpcount],2))
   }
-  for (lcfcount in 2:length(lcflist))
+  if (length(lcflist)>1)
   {
-    h<-lcflist[[lcfcount]]
-    bp<-h$bpts
-    vs<-h$vals
-    lines(bp[1:2],rep(vs[1],2),xlim=bds,ylim=ybds)
-    for (bpcount in 2:(length(bp)-1))
+    for (lcfcount in 2:length(lcflist))
     {
-      lines(bp[bpcount:(bpcount+1)],rep(vs[bpcount],2))
+      h<-lcflist[[lcfcount]]
+      bp<-h$bpts
+      vs<-h$vals
+      lines(bp[1:2],rep(vs[1],2),xlim=bds,ylim=ybds)
+      for (bpcount in 2:(length(bp)-1))
+      {
+        lines(bp[bpcount:(bpcount+1)],rep(vs[bpcount],2))
+      }
     }
   }
-  if (!is.na(filename))
+  if (!is.null(filename))
   {
     dev.off()
   }
