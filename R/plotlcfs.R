@@ -12,6 +12,10 @@
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #' 
 #' @examples 
+#' lcf1<-lcf(c(1,2,3,4),c(1,0,1))
+#' lcf2<-lcf(c(1.5,2.5,3.5),c(-1,-2))
+#' h<-list(lcf1,lcf2)
+#' plotlcfs(lcflist=h[1],xlabel="xlab test",ylabel="ylab test")
 #' 
 #' @export
 
@@ -41,7 +45,6 @@ plotlcfs<-function(lcflist,bds=NULL,xlabel,ylabel,filename=NULL)
   {
     stop("Error in plotlcfs: inappropriate ylabel argument")
   }
-  
   
   #find the bounds if bds was NULL
   if (is.null(bds))

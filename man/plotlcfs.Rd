@@ -20,6 +20,10 @@ plotlcfs(lcflist, bds = NULL, xlabel, ylabel, filename = NULL)
 Plots multiple \code{lcf} objects on the same axes
 }
 \examples{
+lcf1<-lcf(c(1,2,3,4),c(1,0,1))
+lcf2<-lcf(c(1.5,2.5,3.5),c(-1,-2))
+h<-list(lcf1,lcf2)
+plotlcfs(lcflist=h[1],xlabel="xlab test",ylabel="ylab test")
 
 }
 \author{
