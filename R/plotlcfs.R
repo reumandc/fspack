@@ -24,7 +24,7 @@ plotlcfs<-function(lcflist,bds=NULL,filename=NA)
   }
   for (counter in 1:length(lcflist))
   {
-    if (class(lcflist[[counter]])!="lcf")
+    if (class(lcflist[[counter]])[1]!="lcf")
     {
       stop("Error in plotlcfs: lcflist must be a list of lcf objects")
     }
