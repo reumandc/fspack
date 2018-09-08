@@ -43,7 +43,7 @@ plotlcfs<-function(lcflist,bds,filename)
   }
   
   #some more error handling, by now bds is not NA
-  if (!is(numeric(bds)))
+  if (!is.numeric(bds)))
   {
     stop("Error in plotlcfs: bds must be numeric")
   }
