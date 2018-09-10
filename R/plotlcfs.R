@@ -8,7 +8,6 @@
 #' 
 #' @return \code{plotlcfs} returns nothing but generates a plot.
 #' 
-#' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #' 
 #' @examples 
