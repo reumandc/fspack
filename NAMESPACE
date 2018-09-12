@@ -2,6 +2,7 @@
 
 S3method(plcfderiv,default)
 S3method(plcfderiv,plcf)
+export(corlcfs)
 export(lcf)
 export(plcf)
 export(plcfderiv)
