@@ -12,25 +12,25 @@
 #' x<-c(1,2,4,12,13)
 #' y<-c(0,1,-1,100,5)
 #' obj<-plcf(x,y)
-#' res<-plcfderiv(obj)
+#' res<-derivplcf(obj)
 #' 
 #' @export  
 
 derivplcf<-function(object)
 {
-  UseMethod("plcfderiv",object)
+  UseMethod("derivplcf",object)
 }
 
-#' @rdname plcfderiv
+#' @rdname derivplcf
 #' @export
-plcfderiv.default<-function(object)
+derivplcf.default<-function(object)
 {
-  stop("Error in plcfderiv: method not defined for this class")
+  stop("Error in derivplcf: method not defined for this class")
 }
 
-#' @rdname plcfderiv
+#' @rdname derivplcf
 #' @export
-plcfderiv.plcf<-function(object)
+derivplcf.plcf<-function(object)
 {
   bpts<-object$bpts
   bptvals<-object$bptvals
