@@ -4,7 +4,7 @@
 #' 
 #' @param object A \code{plcf} object
 #' 
-#' @return \code{plcfderiv} returns an object of class \code{lcf}.
+#' @return \code{derivplcf} returns an object of class \code{lcf}.
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
 #' 
@@ -16,7 +16,7 @@
 #' 
 #' @export  
 
-plcfderiv<-function(object)
+derivplcf<-function(object)
 {
   UseMethod("plcfderiv",object)
 }
