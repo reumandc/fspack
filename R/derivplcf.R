@@ -34,9 +34,17 @@ derivplcf.plcf<-function(object)
 {
   bpts<-object$bpts
   bptvals<-object$bptvals
-  v1<-bptvals[1:(length(bptvals)-1)]
-  v2<-bptvals[2:length(bptvals)]
-  vals<-(v2-v1)/diff(bpts)
+  
+  #remove repetitions, relying on the fact that a plcf object was checked
+  #to be sure no repeats in bpts had different values for bptvals
+  inds<-which(diff(bpts)==0)+1
+  if (length(inds)>0)
+  {
+    bpts<-bpts[-inds]
+    bptvals<-bptvals[-inds]
+  }
+  
+  vals<-diff(bptvals)/diff(bpts)
   res<-lcf(bpts,vals)
   return(res)
 }
