@@ -2,8 +2,13 @@
 
 S3method(derivplcf,default)
 S3method(derivplcf,plcf)
+S3method(evalatpt,default)
+S3method(evalatpt,lcf)
+S3method(evalatpt,plcf)
+export(avelplcf)
 export(corlcfs)
 export(derivplcf)
+export(evalatpt)
 export(lcf)
 export(plcf)
 export(plotlcfs)
