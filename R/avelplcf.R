@@ -24,14 +24,13 @@ avelplcf<-function(obj,lag)
   
   #first get the breakpoints
   bpts1<-obj$bpts+lag/2
-  inds<-which(bpts1>max(obj$bpts)-lag/2)
-  bpts1<-bpts1[-inds]
-  
   bpts2<-obj$bpts-lag/2
-  inds<-which(bpts2<min(obj$bpts)+lag/2)
-  bpts2<-bpts2[-inds]
-  
   bpts<-union(bpts1,bpts2)
+  
+  inds<-which(bpts>max(obj$bpts)-lag/2)
+  bpts<-bpts[-inds]
+  inds<-which(bpts<min(obj$bpts)+lag/2)
+  bpts<-bpts[-inds]
   
   #now figure out the value at those breakpoints
   bptvals<-NA*numeric(length(bpts))
