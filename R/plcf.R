@@ -55,6 +55,11 @@ plcf<-function(bpts,bptvals)
     stop("Error in plcf: repeats in bpts without coincident repeats in bptsvals")
   }
   
+  #remove the repeats
+  goodinds<-c(which(diffbpts!=0),length(bpts))
+  bpts<-bpts[goodinds]
+  bptvals<-bptvals[goodinds]
+  
   res<-list(bpts=bpts,bptvals=bptvals)
   class(res)<-c("plcf","list")
   return(res)

@@ -21,4 +21,10 @@ test_that("test the plcf creator function for accuracy of output", {
   res<-plcf(x,y)
   expect_equal(res$bpts,x)
   expect_equal(res$bptvals,y)
+  
+  x<-c(1,1,2,2,3,3,4)
+  y<-c(2,2,1,1,4,4,1)
+  res<-plcf(x,y)
+  expect_equal(res$bpts,c(1,2,3,4))
+  expect_equal(res$bptvals,c(2,1,4,1))
 })
