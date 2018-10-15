@@ -20,7 +20,7 @@ given range.}
 \code{corlcfs} returns a single number which is the correlation.
 }
 \description{
-Computes a continuous analogue of Pearson's correlation for two \code{lcf} object
+Computes a continuous analogue of Pearson's correlation for two \code{lcf} objects
 }
 \examples{
 #need some

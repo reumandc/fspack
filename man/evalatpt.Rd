@@ -5,9 +5,9 @@
 \alias{evalatpt.plcf}
 \alias{evalatpt.lcf}
 \alias{evalatpt.default}
-\title{Evaluates a \code{plcf} or \code{lcf} object at a point.
+\title{Evaluates a \code{plcf} or \code{lcf} object at a point or points.
  
-Evaluates a \code{plcf} or \code{lcf} object at a point.}
+Evaluates a \code{plcf} or \code{lcf} object at a point or points.}
 \usage{
 evalatpt(object, ...)
 
@@ -18,21 +18,22 @@ evalatpt(object, ...)
 \method{evalatpt}{default}(object, ...)
 }
 \arguments{
-\item{x}{The point at which to evaluate it.}
+\item{x}{The point(s) at which to evaluate it (a numeric vector).}
 
 \item{obj}{A \code{plcf} or \code{lcf} object.}
 }
 \value{
 \code{evalatpt} returns the values of the function
 represented by \code{object} at \code{x}. If \code{object}
-is an \code{lcf} object and \code{x} equals one of the 
-breakpoints, then NA is returned. If \code{x} is outside 
-the range spanned by the breakpoints, NA is returned.
+is an \code{lcf} object and an entry of \code{x} equals one 
+of the breakpoints, then NA is returned for that one. If 
+an entry of \code{x} is outside the range spanned by the 
+breakpoints, NA is returned.
 }
 \description{
-Evaluates a \code{plcf} or \code{lcf} object at a point.
+Evaluates a \code{plcf} or \code{lcf} object at a point or points.
  
-Evaluates a \code{plcf} or \code{lcf} object at a point.
+Evaluates a \code{plcf} or \code{lcf} object at a point or points.
 }
 \examples{
 #Not written yet but need some
