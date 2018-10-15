@@ -1,6 +1,6 @@
 #' Correlation of two \code{lcf} object
 #' 
-#' Computes a continuous analogue of Pearson's correlation for two \code{lcf} object
+#' Computes a continuous analogue of Pearson's correlation for two \code{lcf} objects
 #' 
 #' @param obj1 An \code{lcf} object
 #' @param obj2 Another such
@@ -20,6 +20,11 @@
 
 corlcfs<-function(obj1,obj2,bds=NULL)
 {
+  if ((class(obj1)!=c("lcf","list")) || (class(obj2)!=c("lcf","list")))
+  {
+    stop("Error in corlcfs: obj1 and obj2 must be lcf objects")
+  }
+  
   #extract components of input
   bpts1<-obj1$bpts
   bpts2<-obj2$bpts
