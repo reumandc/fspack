@@ -4,7 +4,7 @@
 \alias{errcheckplcf}
 \title{Looks to see if the \code{plcf} of a fish seems faulty}
 \usage{
-errcheckplcf(obj, reldatetime, upstreamthresh, timethresh)
+errcheckplcf(obj, reldatetime, upstreamthresh, timethresh, distthresh)
 }
 \arguments{
 \item{obj}{A \code{plcf} object}
@@ -17,6 +17,10 @@ disqualifies a record as unrealistic}
 
 \item{timethresh}{A threshold time (days) without being detected that is tolerated 
 before a record is recommended to remove}
+
+\item{distthresh}{A distance threshold (km) without being detected that is 
+tolerated before a record is recommended to remove. Both this and \code{timethresh}
+need to be exceeded before the record is removed for this reason.}
 }
 \value{
 \code{errcheckplcf} returns a numeric code indicating whether the record seems
@@ -24,7 +28,7 @@ faulty and if so what seems wrong with it. Codes are:
 N: no problem detected
 B: detections before the release
 U: went upsteam, in one shot, more than \code{upstreamthresh}
-T: went for too long without being detected
+T: went for too long AND travelled too far without being detected
 It is possible multiple problems occur; the error codes are concatenated.
 }
 \description{
