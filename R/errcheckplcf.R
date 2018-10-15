@@ -10,13 +10,16 @@
 #' disqualifies a record as unrealistic
 #' @param timethresh A threshold time (days) without being detected that is tolerated 
 #' before a record is recommended to remove
+#' @param distthresh A distance threshold (km) without being detected that is 
+#' tolerated before a record is recommended to remove. Both this and \code{timethresh}
+#' need to be exceeded before the record is removed for this reason.
 #' 
 #' @return \code{errcheckplcf} returns a numeric code indicating whether the record seems
 #' faulty and if so what seems wrong with it. Codes are:
 #' N: no problem detected
 #' B: detections before the release
 #' U: went upsteam, in one shot, more than \code{upstreamthresh}
-#' T: went for too long without being detected
+#' T: went for too long AND travelled too far without being detected
 #' It is possible multiple problems occur; the error codes are concatenated.
 #' 
 #' @author Daniel Reuman, \email{reuman@@ku.edu}
@@ -26,7 +29,7 @@
 #' 
 #' @export
 
-errcheckplcf<-function(obj,reldatetime,upstreamthresh,timethresh)
+errcheckplcf<-function(obj,reldatetime,upstreamthresh,timethresh,distthresh)
 {
   bpts<-obj$bpts
   bptvals<-obj$bptvals
@@ -65,7 +68,7 @@ errcheckplcf<-function(obj,reldatetime,upstreamthresh,timethresh)
   }
   
   #look for going for too long without being detected
-  if (any(diff(bpts)>timethresh))
+  if (any((diff(bpts)>timethresh) & (abs(diff(bptvals))>distthresh)))
   {
     if (res=="N")
     {

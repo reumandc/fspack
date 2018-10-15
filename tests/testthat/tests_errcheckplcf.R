@@ -7,7 +7,8 @@ test_that("test the case of no problem",{
   reldatetime<-0
   upstreamthresh<-5
   timethresh<-30
-  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh),"N")
+  distthresh<-100
+  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh,distthresh),"N")
 })
 
 test_that("test the case of detections before the release",{
@@ -17,17 +18,19 @@ test_that("test the case of detections before the release",{
   reldatetime<-5
   upstreamthresh<-5
   timethresh<-30
-  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh),"B")
+  distthresh<-100
+  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh,distthresh),"B")
 })
 
-test_that("test the case of not being detected for too long",{
+test_that("test the case of not being detected for too long and too far",{
   bpts<-c(0,30,31,32,40) #these are times
-  bptvals<-c(300,290,290,200,100) #river kms
+  bptvals<-c(300,190,190,180,150) #river kms
   obj<-plcf(bpts,bptvals)
   reldatetime<-0
   upstreamthresh<-5
   timethresh<-25
-  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh),"T")
+  distthresh<-100
+  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh,distthresh),"T")
 })
 
 test_that("test the case of going upsteam too far",{
@@ -37,16 +40,18 @@ test_that("test the case of going upsteam too far",{
   reldatetime<-0
   upstreamthresh<-10
   timethresh<-30
-  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh),"U")
+  distthresh<-100
+  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh,distthresh),"U")
 })
 
 test_that("test some mixed cases where more than one things is wrong",{
   bpts<-c(0,30,32,38,40) #these are times
-  bptvals<-c(300,290,295,302,100) #river kms
+  bptvals<-c(300,190,195,202,100) #river kms
   obj<-plcf(bpts,bptvals)
   reldatetime<-1
   upstreamthresh<-10
   timethresh<-25
-  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh),"BUT")
+  distthresh<-100
+  expect_equal(errcheckplcf(obj,reldatetime,upstreamthresh,timethresh,distthresh),"BUT")
 })
 
