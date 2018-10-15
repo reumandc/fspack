@@ -21,6 +21,27 @@ test_that("test the quantitative accuracy of the output",{
   plcf2<-plcf(c(0,1),c(1,2))
   expect_equal(corplcfs(plcf1,plcf2,NULL),1)
 
-  #***DAN: you should probably put in another text or two
+  plcf1<-plcf(c(0,1),c(0,1))
+  plcf2<-plcf(c(0,1),c(2,1))
+  expect_equal(corplcfs(plcf1,plcf2,NULL),-1)
+
+  plcf1<-plcf(c(0,1),c(0,1))
+  plcf2<-plcf(c(0,1),c(1,1))
+  expect_equal(corplcfs(plcf1,plcf2,NULL),NaN)
+
+  plcf1<-plcf(c(0,1),c(0,1))
+  plcf2<-plcf(c(0,1),c(1,1.5))
+  expect_equal(corplcfs(plcf1,plcf2,NULL),1)
+  
+  plcf1<-plcf(c(0,2),c(0,2))
+  plcf2<-plcf(c(0,1,2),c(0,1,0))
+  expect_equal(corplcfs(plcf1,plcf2,NULL),0)
+  
+  plcf1<-plcf(c(0,3),c(0,3))
+  plcf2<-plcf(c(0,2,3),c(0,2,0))
+  num<-(8/3-5+3)+(-18+36-45/2)-(-16/3+16-15)
+  denom1<-(9-6*9/4+27/4)
+  denom2<-(8/3-4+2)+(4*9-90+75)-(4*8/3-40+50)
+  expect_equal(corplcfs(plcf1,plcf2,NULL),num/sqrt(denom1*denom2))
 })
 

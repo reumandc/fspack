@@ -66,8 +66,8 @@ corplcfs<-function(obj1,obj2,bds=NULL)
   
   #compute averages for the two functions
   len<-length(bpts)
-  bar1<-sum(diff(bpts)*(bptvals1[1:(len-1)]+bptvals1[2:len])/2)
-  bar2<-sum(diff(bpts)*(bptvals2[1:(len-1)]+bptvals2[2:len])/2)
+  bar1<-sum(diff(bpts)*(bptvals1[1:(len-1)]+bptvals1[2:len])/2)/(max(bpts)-min(bpts))
+  bar2<-sum(diff(bpts)*(bptvals2[1:(len-1)]+bptvals2[2:len])/2)/(max(bpts)-min(bpts))
   
   #compute the numerator and denominator of the correlation
   num<-0
