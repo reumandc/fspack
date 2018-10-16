@@ -15,7 +15,7 @@
 #' 
 #' @export
 
-plotplcfs<-function(plcflist,bds=NULL,xlabel,ylabel,filename=NULL)
+plotplcfs<-function(plcflist,bds=NULL,xlabel,ylabel,filename=NULL,cols=rep("black",times=length(plcflist)))
 {
   #error handling
   if (class(plcflist)!="list")
