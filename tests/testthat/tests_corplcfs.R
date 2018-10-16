@@ -43,5 +43,16 @@ test_that("test the quantitative accuracy of the output",{
   denom1<-(9-6*9/4+27/4)
   denom2<-(8/3-4+2)+(4*9-90+75)-(4*8/3-40+50)
   expect_equal(corplcfs(plcf1,plcf2,NULL),num/sqrt(denom1*denom2))
+  
+  x<-runif(15)
+  y1<-runif(15)
+  y2<-(2*y1+3)
+  y3<-(-3*y1+1)
+  obj1<-plcf(x,y1)
+  obj2<-plcf(x,y2)
+  obj3<-plcf(x,y3)
+  expect_equal(corplcfs(obj1,obj2,NULL),1)
+  expect_equal(corplcfs(obj1,obj3,NULL),-1)
+
 })
 
